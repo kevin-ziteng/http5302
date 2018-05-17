@@ -31,3 +31,29 @@ var todayDayOfWeek = days[today.getDay()];
 if (pTodayDate != null) {
     pTodayDate.innerHTML = "Today is " + todayDayOfWeek + ", " + todayMonth + " " + today.getDate() + ", " + today.getFullYear();
 }
+var pBirthDate = document.getElementById("input--date-picker");
+var pBirthDateButton = document.getElementById("button--birthday");
+if (pBirthDateButton != null) {
+    pBirthDateButton.onclick = function () {
+        //console.log(pBirthDate.value);
+        var birthDate = new Date(pBirthDate.value);
+        //console.log(birthDate);
+        birthDate.setTime(birthDate.getTime() + 240 * 60 * 1000);
+        //console.log(birthDate);
+        document.getElementById("p--birthday-message").innerHTML = checkBirthDate(birthDate);
+    };
+}
+function checkBirthDate(date) {
+    console.log(date);
+    console.log(today);
+    if (date.getMonth() == today.getMonth() &&
+        date.getDate() == today.getDate()) {
+        console.log("Happy birthday!");
+        return "Happy birthday!";
+    }
+    else {
+        var birthDateCurrentYear = new Date(today.getFullYear(), date.getMonth(), date.getDate());
+        console.log(birthDateCurrentYear);
+        return "Your birthday will be on " + days[birthDateCurrentYear.getDay()] + " " + months[birthDateCurrentYear.getMonth()] + " " + birthDateCurrentYear.getDate() + ", " + birthDateCurrentYear.getFullYear();
+    }
+}

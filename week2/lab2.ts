@@ -33,3 +33,35 @@ if (pTodayDate != null)
 {
     pTodayDate.innerHTML = `Today is ${todayDayOfWeek}, ${todayMonth} ${today.getDate()}, ${today.getFullYear()}`;
 }
+
+let pBirthDate = document.getElementById("input--date-picker");
+let pBirthDateButton = document.getElementById("button--birthday");
+
+if( pBirthDateButton != null)
+{
+    pBirthDateButton.onclick = function (){
+        //console.log(pBirthDate.value);
+        let birthDate = new Date(pBirthDate.value);
+        //console.log(birthDate);
+        birthDate.setTime(birthDate.getTime() + 240*60*1000);
+        //console.log(birthDate);
+        document.getElementById("p--birthday-message").innerHTML = checkBirthDate(birthDate);
+    }
+}
+
+function checkBirthDate( date : Date ){
+    console.log(date);
+    console.log(today);
+    if ( date.getMonth() == today.getMonth() &&
+         date.getDate() == today.getDate() )
+         {
+            console.log("Happy birthday!");
+            return "Happy birthday!";
+         }
+         else
+         {             
+             let birthDateCurrentYear = new Date(today.getFullYear(),date.getMonth(),date.getDate());
+             console.log(birthDateCurrentYear);
+             return `Your birthday will be on ${days[birthDateCurrentYear.getDay()]} ${months[birthDateCurrentYear.getMonth()]} ${birthDateCurrentYear.getDate()}, ${birthDateCurrentYear.getFullYear()}`;
+         }
+}
