@@ -41,7 +41,7 @@ if( pBirthDateButton != null)
 {
     pBirthDateButton.onclick = function (){
         //console.log(pBirthDate.value);
-        let birthDate = new Date(pBirthDate.value);
+        let birthDate : Date = new Date(pBirthDate.value);
         //console.log(birthDate);
         birthDate.setTime(birthDate.getTime() + 240*60*1000);
         //console.log(birthDate);
@@ -49,19 +49,17 @@ if( pBirthDateButton != null)
     }
 }
 
-function checkBirthDate( date : Date ){
+function checkBirthDate( date : Date ) :string{
     console.log(date);
     console.log(today);
     if ( date.getMonth() == today.getMonth() &&
          date.getDate() == today.getDate() )
          {
-            console.log("Happy birthday!");
             return "Happy birthday!";
          }
          else
          {             
              let birthDateCurrentYear = new Date(today.getFullYear(),date.getMonth(),date.getDate());
-             console.log(birthDateCurrentYear);
              return `Your birthday will be on ${days[birthDateCurrentYear.getDay()]} ${months[birthDateCurrentYear.getMonth()]} ${birthDateCurrentYear.getDate()}, ${birthDateCurrentYear.getFullYear()}`;
          }
 }

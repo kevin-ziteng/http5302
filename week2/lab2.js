@@ -48,12 +48,10 @@ function checkBirthDate(date) {
     console.log(today);
     if (date.getMonth() == today.getMonth() &&
         date.getDate() == today.getDate()) {
-        console.log("Happy birthday!");
         return "Happy birthday!";
     }
     else {
         var birthDateCurrentYear = new Date(today.getFullYear(), date.getMonth(), date.getDate());
-        console.log(birthDateCurrentYear);
         return "Your birthday will be on " + days[birthDateCurrentYear.getDay()] + " " + months[birthDateCurrentYear.getMonth()] + " " + birthDateCurrentYear.getDate() + ", " + birthDateCurrentYear.getFullYear();
     }
 }
