@@ -1,0 +1,44 @@
+.top-navbar a{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+.top-navbar{
+    text-align: left;
+    padding-left: 200px; 
+    position: relative;
+}
+.dropdown{
+    float: left;
+    overflow: hidden;
+}
+.dropbtn, .navbtn, .sub-dropbtn{
+    border: none;
+    background-color: #fff;
+    font-size: 1.2em;
+}
+
+.sub-dropbtn{
+    font-size: 1em;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.sub-dropdown:hover .sub-dropdown-content{
+    display: block;
+    right:0px;
+}
+
+.sub-dropdown-content{
+    display: none;
+    float: right;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+}
+.dropdown-content a {
+
+    display: block;
+}

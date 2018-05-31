@@ -12,33 +12,34 @@ var MapMarker = /** @class */ (function () {
 var Toronto = { lat: 43.649686, lng: -79.376255 };
 // Toronto.lat = 43;
 // Toronto.lng = -79.38;
-$.ajax({
-    url: './ac_locations.json',
-    dataType: 'json',
-    success: function (data) {
-        //console.log(data);
-        addresses = data;
-        for (var _i = 0, addresses_1 = addresses; _i < addresses_1.length; _i++) {
-            var i = addresses_1[_i];
-            // add map marker to array of map markers
-            var newMapMarker = new MapMarker(i.address);
-            mapMarkers.push(newMapMarker);
-        }
-    }
-});
 window.onload = function () {
-    console.log(mapMarkers);
-    start(0);
-    function start(counter) {
-        if (counter < mapMarkers.length) {
-            geo(mapMarkers[counter]);
-            //console.log(counter);            
-            counter++;
-            start(counter);
-            // setTimeout(function(){            
-            // }, 100);                     
+    $.ajax({
+        url: './ac_locations.json',
+        dataType: 'json',
+        success: function (data) {
+            //console.log(data);
+            addresses = data;
+            for (var _i = 0, addresses_1 = addresses; _i < addresses_1.length; _i++) {
+                var i = addresses_1[_i];
+                // add map marker to array of map markers
+                var newMapMarker = new MapMarker(i.address);
+                geo(newMapMarker);
+                mapMarkers.push(newMapMarker);
+            }
         }
-    }
+    });
+    console.log(mapMarkers);
+    // start(0);
+    // function start(counter){
+    //     if(counter < mapMarkers.length){
+    //         geo(mapMarkers[counter]);
+    //         //console.log(counter);            
+    //         counter++;
+    //         start(counter);
+    //         // setTimeout(function(){            
+    //         // }, 100);                     
+    //     }
+    // }
 };
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -59,7 +60,7 @@ function geo(mapMark) {
             });
         }
         else {
-            setTimeout(function () { geo(mapMark); }, 2000);
+            setTimeout(function () { console.log("wait"); geo(mapMark); }, 300);
             //alert('Geocode was not successful for the following reason: ' + status);
         }
     });
