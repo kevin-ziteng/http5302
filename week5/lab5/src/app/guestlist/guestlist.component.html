@@ -1,0 +1,18 @@
+<p>
+  guestlist works!
+</p>
+<div *ngIf="guests">
+    <ol>
+      <li *ngFor="let guest of guests">
+        {{guest.firstName}} {{guest.lastName}} | {{guest.dateOfBirth}}
+      </li>
+    </ol>
+</div>
+<input [(ngModel)]="searchGuest.firstName">
+<div>{{ searchGuest.firstName }}</div>
+
+<div>
+  <label for="">Last name: </label>
+  <input [(ngModel)]="searchGuest.lastName">
+</div>
+<button (click)="getPeople(searchGuest)">Search</button>
